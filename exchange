@@ -1,1 +1,9 @@
-exchange
+exchangespring.cloud:
+  consul:
+    host: consul-dev.liq.intranet.db.com
+    port: 8500
+    scheme: http
+  discovery.enabled: false
+  loadbalancer:
+    cache.enabled: false
+    retry.enabled: false
