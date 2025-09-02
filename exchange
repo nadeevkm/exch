@@ -1,9 +1,7 @@
-exchangespring.cloud:
-  consul:
-    host: consul-dev.liq.intranet.db.com
-    port: 8500
-    scheme: http
-  discovery.enabled: false
-  loadbalancer:
-    cache.enabled: false
-    retry.enabled: false
+	// src/main/java/netflix/ocelli/loadbalancer/RoundRobinLoadBalancer.java
+	public Mono<Response<ServiceInstance>> choose(Request request) {
+		ServiceInstanceListSupplier supplier = serviceInstanceListSupplierProvider
+				.getIfAvailable(NoopServiceInstanceListSupplier::new);
+		return supplier.get(request).next()
+				.map(serviceInstances -> processInstanceResponse(supplier, serviceInstances));
+	}
