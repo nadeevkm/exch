@@ -1,7 +1,31 @@
-	// src/main/java/netflix/ocelli/loadbalancer/RoundRobinLoadBalancer.java
-	public Mono<Response<ServiceInstance>> choose(Request request) {
-		ServiceInstanceListSupplier supplier = serviceInstanceListSupplierProvider
-				.getIfAvailable(NoopServiceInstanceListSupplier::new);
-		return supplier.get(request).next()
-				.map(serviceInstances -> processInstanceResponse(supplier, serviceInstances));
-	}
+
+Rude and simplified picture.
+
+Now we have 
+
+2 clusters
+
+GSLB which help to increase availability of our system, but mostly in relation to external interactions,
+
+some upstreams and UI
+
+but now..
+
+so there is an idea of making most of presense of two clusters and several insances of each services
+
+
+so for example when INV_GOV (LIGHT) needs to get data from location sv from its cluster and it's not availavble
+he would call location-sv from another cluster
+
+
+How can we achive this?
+
+we already have a Consul platform deployed in liquidity domain. Consul is a service registry system, 
+
+In details - every service on startup tells Consul its coordinates, and after that cosnsul keeps track service's node health. So when a service needs to call some other one - it asks Consul what 
+
+There are several possible configurations of this process. In our current aproach - we treat it as the last resort, so we when service asks for 
+
+And in order to reduce network burden there is caching applied here, so 
+
+
