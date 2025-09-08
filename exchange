@@ -9,10 +9,13 @@ GSLB which help to increase availability of our system, but mostly in relation t
 
 some upstreams and UI
 
-but now..
+but now.. when during the request flow one of the participant servers in cluster is down,
+for example at aome stage of processing INV-SV
+needs data from Locations-SV, but if its down, 
+all sikilar requests to this cluster will fail.
 
 so there is an idea of making most of presense of two clusters and several insances of each services
-
+and making possible fallback interaction in a way that if same cluster sv os not available, client service will call sikilar sv from antoher cluster
 
 so for example when INV_GOV (LIGHT) needs to get data from location sv from its cluster and it's not availavble
 he would call location-sv from another cluster
@@ -26,6 +29,11 @@ In details - every service on startup tells Consul its coordinates, and after th
 
 There are several possible configurations of this process. In our current aproach - we treat it as the last resort, so we when service asks for 
 
-And in order to reduce network burden there is caching applied here, so 
+And in order to reduce network burden there is caching applied here, so
+and a fallback option as a direct request to the url whick is stored in configuration.
+
+These things now are servise-level configured, 
+so you can turn it on or off in soke particular services.
+
 
 
