@@ -1,36 +1,25 @@
-    class DiscoveryFeignClient(
-        private val delegate: Client,
-        private val loadBalancer: LoadBalancerClient,
-        private val env: Environment,
-    ) : Client {
-        @Suppress("TooGenericExceptionCaught")
-        override fun execute(request: Request, options: Request.Options): Response {
-            try {
-                val original = URI.create(request.url())
+// Please implement the following interface of the ledger service. 
+// This service should provide an ability to:
+// 1) create new account
+// 2) transfer funds from one account to another
+// 3) get current balance of any account
+//
+// Please treat this interface as serving some public API, 
+// thus all necessary data validation checks should be implemented
 
-                val targetServiceDomainName = original.host
-                val targetServiceName = CustomConsulRegistrationCustomizer.extractServiceName(env, targetServiceDomainName)
-                val targetServiceDiscoveryName = CustomConsulRegistrationCustomizer.composeServiceDiscoveryName(targetServiceName, env)
 
-                val chosenInstance = loadBalancer.choose(targetServiceDiscoveryName)
-                    ?: throw IllegalStateException("No instances available for serviceId='$targetServiceDiscoveryName'")
 
-                val newUrl: String = request.url().replace(original.host, chosenInstance.host)
+DEPARTMENT
+-ID
+-NAME
 
-                val requestViaDiscovery = Request.create(
-                    request.httpMethod(),
-                    newUrl,
-                    request.headers(),
-                    request.body(),
-                    request.charset(),
-                    request.requestTemplate()
-                )
+EMPLOYEE
+-ID
+-DEPARTMENT_ID
+-CHIEF_ID
+-NAME
+-SALARY
 
-                log.warn("Executing LB request $requestViaDiscovery, oldRequest: $request")
-
-                return delegate.execute(requestViaDiscovery, options)
-            } catch (e: Exception) {
-                log.warn("Exception occurred while using client consul discovery process. Request: $request", e)
-                return delegate.execute(request, options)
-            }
-        }
+1. select employees with salary more than his chief
+2. select departmens with more that 3 employees
+3. select employees with highest salary from each department
