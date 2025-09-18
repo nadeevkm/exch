@@ -1,4 +1,36 @@
-{"@timestamp":"2025-09-16T17:25:53.219Z","@version":"1","message":"Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [org.springframework.cloud.loadbalancer.annotation.LoadBalancerClientConfiguration]; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.autoconfigure.condition.OnClassCondition]: Constructor threw exception; nested exception is java.lang.StackOverflowError","logger_name":"org.springframework.context.annotation.AnnotationConfigApplicationContext","thread_name":"main","level":"WARN","level_value":30000}{"@timestamp":"2025-09-16T17:25:53.227Z","@version":"1","message":"Exception occurred while using client consul discovery process. Request: GET https://locations-sv-dk2726-e.apps.ukonpd3a.dev.fabric.intranet.db.com/api/v1/locations HTTP/1.1\nAccept: application/json\n\nBinary data","logger_name":"com.db.cb.liq.asl.core.web.feign.configuration.FeignClientConfiguration$DiscoveryFeignClient$Companion","thread_name":"main","level":"WARN","level_value":30000,"stack_trace":"java.lang.reflect.UndeclaredThrowableException: Failed to invoke event listener method\nHandlerMethod details: \nBean [com.db.cb.liq.asl.invgov.schedule.CacheUpdateTracker$$EnhancerBySpringCGLIB$$ac2c4c7e]\nMethod [public void com.db.cb.liq.asl.invgov.schedule.CacheUpdateTracker.initCaches(org.springframework.context.event.ContextRefreshedEvent)]\nResolved arguments: \n[0] [type=org.springframework.context.event.ContextRefreshedEvent] [value=org.springframework.context.event.ContextRefreshedEvent[source=LoadBalancerClientFactory-asl-locations-sv-int03, started on Tue Sep 16 17:25:53 UTC 2025, parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7e4d2287]]
-at org.springframework.context.event.ApplicationListenerMethodAdapter.doInvoke(ApplicationListenerMethodAdapter.java:361)
-at org.springframework.context.event.ApplicationListenerMethodAdapter.processEvent(ApplicationListenerMethodAdapter.java:229)
-at org.springframework.context.event.ApplicationListenerMethodAdapter.onApplicationEvent(ApplicationListenerMethodAdapter.java:166)
+    class DiscoveryFeignClient(
+        private val delegate: Client,
+        private val loadBalancer: LoadBalancerClient,
+        private val env: Environment,
+    ) : Client {
+        @Suppress("TooGenericExceptionCaught")
+        override fun execute(request: Request, options: Request.Options): Response {
+            try {
+                val original = URI.create(request.url())
+
+                val targetServiceDomainName = original.host
+                val targetServiceName = CustomConsulRegistrationCustomizer.extractServiceName(env, targetServiceDomainName)
+                val targetServiceDiscoveryName = CustomConsulRegistrationCustomizer.composeServiceDiscoveryName(targetServiceName, env)
+
+                val chosenInstance = loadBalancer.choose(targetServiceDiscoveryName)
+                    ?: throw IllegalStateException("No instances available for serviceId='$targetServiceDiscoveryName'")
+
+                val newUrl: String = request.url().replace(original.host, chosenInstance.host)
+
+                val requestViaDiscovery = Request.create(
+                    request.httpMethod(),
+                    newUrl,
+                    request.headers(),
+                    request.body(),
+                    request.charset(),
+                    request.requestTemplate()
+                )
+
+                log.warn("Executing LB request $requestViaDiscovery, oldRequest: $request")
+
+                return delegate.execute(requestViaDiscovery, options)
+            } catch (e: Exception) {
+                log.warn("Exception occurred while using client consul discovery process. Request: $request", e)
+                return delegate.execute(request, options)
+            }
+        }
