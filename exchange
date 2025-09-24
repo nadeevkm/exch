@@ -1,3 +1,10 @@
+:investments-sv:main: Could not find :wlthint3client.jakarta:.
+Searched in the following locations:
+  - file:/D:/Dev/projects/strategic-asl/investments-sv/service/libs/wlthint3client.jakarta.jar
+Required by:
+    project :investments-sv
+
+
 Execution failed for task ':investments-sv:compileKotlin'.
 > Could not resolve all files for configuration ':investments-sv:detachedConfiguration1'.
    > Failed to transform wlthint3client.jakarta.jar to match attributes {artifactType=classpath-entry-snapshot, org.gradle.libraryelements=jar, org.gradle.usage=java-runtime}.
