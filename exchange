@@ -1,52 +1,25 @@
-13:36:03.719 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
-13:36:03.945 [main] INFO  c.d.c.l.a.i.InvestmentsServiceApplicationKt - Starting InvestmentsServiceApplicationKt using Java 17.0.15 with PID 25012 (D:\Dev\projects\strategic-asl\investments-sv\service\build\classes\kotlin\main started by nadekon in D:\Dev\projects\strategic-asl)
-13:36:03.946 [main] DEBUG c.d.c.l.a.i.InvestmentsServiceApplicationKt - Running with Spring Boot v3.5.4, Spring v6.2.9
-13:36:03.947 [main] INFO  c.d.c.l.a.i.InvestmentsServiceApplicationKt - The following 15 profiles are active: "dev", "spring-debug", "dev-controllers", "env", "web", "springdoc", "ssl", "authentication", "authorization", "database-h2", "investments-service", "rmw", "email", "baas-email-list", "static-data-management-service"
-13:36:07.803 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-13:36:08.335 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 502 ms. Found 1 JPA repository interface.
-13:36:10.871 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
-13:36:10.901 [main] INFO  o.s.i.c.DefaultConfiguringBeanFactoryPostProcessor - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
-13:36:11.309 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Could not enhance configuration class [com.db.cb.liq.asl.core.web.spring.configuration.BaseServiceApplicationConfiguration]. Consider declaring @Configuration(proxyBeanMethods=false) without inter-bean references between @Bean methods on the configuration class, avoiding the need for CGLIB enhancement.
-13:36:11.339 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [jakarta.jms.ConnectionFactory]: Factory method 'provideConnectionFactory' threw exception with message: Failed to initialize JNDI context, tried 2 time or times totally, the interval of each time is 0ms. 
+Timed out while attempting to establish connection to :t3s://nygindapnp619.us.db.com:25012
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:200)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:89)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:169)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	... 92 common frames omitted
+Caused by: javax.naming.CommunicationException: Failed to initialize JNDI context, tried 2 time or times totally, the interval of each time is 0ms. 
+Timed out while attempting to establish connection to :t3s://nygindapnp619.us.db.com:25012
 
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-13:36:11.423 [main] ERROR o.s.boot.SpringApplication - Application run failed
-org.springframework.beans.factory.BeanDefinitionStoreException: Could not enhance configuration class [com.db.cb.liq.asl.core.web.spring.configuration.BaseServiceApplicationConfiguration]. Consider declaring @Configuration(proxyBeanMethods=false) without inter-bean references between @Bean methods on the configuration class, avoiding the need for CGLIB enhancement.
-	at org.springframework.context.annotation.ConfigurationClassEnhancer.enhance(ConfigurationClassEnhancer.java:136)
-	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:539)
-	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanFactory(ConfigurationClassPostProcessor.java:311)
-	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:363)
-	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:153)
-	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:791)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:609)
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
-	at com.db.cb.liq.asl.investments.InvestmentsServiceApplicationKt.main(InvestmentsServiceApplication.kt:63)
-Caused by: org.springframework.cglib.core.ReflectUtils$2: No compatible defineClass mechanism detected: JVM should be started with --add-opens=java.base/java.lang=ALL-UNNAMED for ClassLoader.defineClass to be accessible. On the module path, you may not be able to define this CGLIB-generated class at all.
-	at org.springframework.cglib.core.ReflectUtils.defineClass(ReflectUtils.java:569)
-	at org.springframework.cglib.core.AbstractClassGenerator.generate(AbstractClassGenerator.java:375)
-	at org.springframework.cglib.proxy.Enhancer.generate(Enhancer.java:575)
-	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.lambda$new$1(AbstractClassGenerator.java:107)
-	at org.springframework.cglib.core.internal.LoadingCache.lambda$createEntry$1(LoadingCache.java:52)
-	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java)
-	at org.springframework.cglib.core.internal.LoadingCache.createEntry(LoadingCache.java:57)
-	at org.springframework.cglib.core.internal.LoadingCache.get(LoadingCache.java:34)
-	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.get(AbstractClassGenerator.java:129)
-	at org.springframework.cglib.core.AbstractClassGenerator.create(AbstractClassGenerator.java:321)
-	at org.springframework.cglib.proxy.Enhancer.createHelper(Enhancer.java:562)
-	at org.springframework.cglib.proxy.Enhancer.createClass(Enhancer.java:407)
-	at org.springframework.context.annotation.ConfigurationClassEnhancer.createClass(ConfigurationClassEnhancer.java:198)
-	at org.springframework.context.annotation.ConfigurationClassEnhancer.enhance(ConfigurationClassEnhancer.java:128)
-	... 13 common frames omitted
-Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @1f0f1111
-	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:354)
-	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:297)
-	at java.base/java.lang.reflect.Method.checkCanSetAccessible(Method.java:200)
-	at java.base/java.lang.reflect.Method.setAccessible(Method.java:194)
-	at org.springframework.cglib.core.ReflectUtils.defineClass(ReflectUtils.java:516)
-	... 27 common frames omitted
+
+
+wlthint3client-14.1.1.0
+only javax
+
+wlthint3client.jakarta.jar
+javax + jakarta
+
+Multi-Release: true
+Implementation-Title: wls_sharedLibrariesWithoutPOM
+Implementation-Version: 14.1.1.0.0
+Specification-Title: wlthint3client
+Library-Version: 14.1.1.0.0
+Specification-Version: 14.1.1
+Created-By: 1.8.0_351 (Oracle Corporation)
