@@ -1,12 +1,21 @@
+Execution failed for task ':investments-sv:compileKotlin'.
+> Could not resolve all files for configuration ':investments-sv:detachedConfiguration1'.
+   > Failed to transform wlthint3client.jakarta.jar to match attributes {artifactType=classpath-entry-snapshot, org.gradle.libraryelements=jar, org.gradle.usage=java-runtime}.
+      > Execution failed for ClasspathEntrySnapshotTransform: D:\Dev\projects\strategic-asl\investments-sv\service\libs\wlthint3client.jakarta.jar.
+         > Check failed.
+
+
+
+
 Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [jakarta.jms.ConnectionFactory]: Factory method 'provideConnectionFactory' threw exception with message: Failed to initialize JNDI context, tried 2 time or times totally, the interval of each time is 0ms. 
 Timed out while attempting to establish connection to :t3s://nygindapnp619.us.db.com:25012
 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:200)
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:89)
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:169)
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
-	... 92 common frames omitted
-Caused by: javax.naming.CommunicationException: Failed to initialize JNDI context, tried 2 time or times totally, the interval of each time is 0ms. 
-Timed out while attempting to establish connection to :t3s://nygindapnp619.us.db.com:25012
+		at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:89)
+			at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:169)
+				at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+					... 92 common frames omitted
+					Caused by: javax.naming.CommunicationException: Failed to initialize JNDI context, tried 2 time or times totally, the interval of each time is 0ms. 
+					Timed out while attempting to establish connection to :t3s://nygindapnp619.us.db.com:25012
 
 
 
