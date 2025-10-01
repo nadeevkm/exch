@@ -1,3 +1,5 @@
+{"hostname":"usonpu1b-hpwxg-worker1-nlh74","kubernetes":{"container_name":"baas-sv","namespace_labels":{"narid":"52426-1","svc-nodeport":"allowed"},"namespace_name":"dk2726-m","pod_name":"baas-sv-5cd5dfd546-xgj7r"},"level":"error","log_source":"container","log_type":"application","openshift":{},"structured":{"@timestamp":"2025-10-01T15:43:43.112Z","@version":"1","level":"ERROR","level_value":40000,"logger_name":"org.springframework.jms.listener.DefaultMessageListenerContainer","message":"Could not refresh JMS Connection for destination 'RMWLocalModule!ASLEventTopic' - retrying using FixedBackOff{interval=5000, currentAttempts=13816, maxAttempts=unlimited}. Cause: [Security:090398]Invalid Subject: principals=[batch]","thread_name":"DefaultMessageListenerContainer-23"}}
+
 :investments-sv:main: Could not find :wlthint3client.jakarta:.
 Searched in the following locations:
   - file:/D:/Dev/projects/strategic-asl/investments-sv/service/libs/wlthint3client.jakarta.jar
