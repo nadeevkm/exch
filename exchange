@@ -1,43 +1,30 @@
-{"hostname":"usonpu1b-hpwxg-worker1-nlh74","kubernetes":{"container_name":"baas-sv","namespace_labels":{"narid":"52426-1","svc-nodeport":"allowed"},"namespace_name":"dk2726-m","pod_name":"baas-sv-5cd5dfd546-xgj7r"},"level":"error","log_source":"container","log_type":"application","openshift":{},"structured":{"@timestamp":"2025-10-01T15:43:43.112Z","@version":"1","level":"ERROR","level_value":40000,"logger_name":"org.springframework.jms.listener.DefaultMessageListenerContainer","message":"Could not refresh JMS Connection for destination 'RMWLocalModule!ASLEventTopic' - retrying using FixedBackOff{interval=5000, currentAttempts=13816, maxAttempts=unlimited}. Cause: [Security:090398]Invalid Subject: principals=[batch]","thread_name":"DefaultMessageListenerContainer-23"}}
-
-:investments-sv:main: Could not find :wlthint3client.jakarta:.
-Searched in the following locations:
-  - file:/D:/Dev/projects/strategic-asl/investments-sv/service/libs/wlthint3client.jakarta.jar
-Required by:
-    project :investments-sv
-
-
-Execution failed for task ':investments-sv:compileKotlin'.
-> Could not resolve all files for configuration ':investments-sv:detachedConfiguration1'.
-   > Failed to transform wlthint3client.jakarta.jar to match attributes {artifactType=classpath-entry-snapshot, org.gradle.libraryelements=jar, org.gradle.usage=java-runtime}.
-      > Execution failed for ClasspathEntrySnapshotTransform: D:\Dev\projects\strategic-asl\investments-sv\service\libs\wlthint3client.jakarta.jar.
-         > Check failed.
-
-
+    fun prettyPrintXML(xml: String?): String? {
+        val xmlInput: Source = StreamSource(StringReader(xml))
+        val stringWriter = StringWriter()
+        val xmlOutput = StreamResult(stringWriter)
+        val transformerFactory = TransformerFactory
+            .newInstance()
+        val transformer = transformerFactory.newTransformer()
+        transformer.setOutputProperty(
+            "{http://xml.apache.org/xslt}indent-amount", "2"
+        )
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes")
+        transformer.transform(xmlInput, xmlOutput)
+        return xmlOutput.writer.toString()
+    }
 
 
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [jakarta.jms.ConnectionFactory]: Factory method 'provideConnectionFactory' threw exception with message: Failed to initialize JNDI context, tried 2 time or times totally, the interval of each time is 0ms. 
-Timed out while attempting to establish connection to :t3s://nygindapnp619.us.db.com:25012
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:200)
-		at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:89)
-			at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:169)
-				at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
-					... 92 common frames omitted
-					Caused by: javax.naming.CommunicationException: Failed to initialize JNDI context, tried 2 time or times totally, the interval of each time is 0ms. 
-					Timed out while attempting to establish connection to :t3s://nygindapnp619.us.db.com:25012
-
-
-
-wlthint3client-14.1.1.0
-only javax
-
-wlthint3client.jakarta.jar
-javax + jakarta
-
-Multi-Release: true
-Implementation-Title: wls_sharedLibrariesWithoutPOM
-Implementation-Version: 14.1.1.0.0
-Specification-Title: wlthint3client
-Library-Version: 14.1.1.0.0
-Specification-Version: 14.1.1
-Created-By: 1.8.0_351 (Oracle Corporation)
+Caused by: javax.xml.transform.TransformerException: org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; Premature end of file.
+	at java.xml/com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:792)
+	at java.xml/com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:395)
+	at com.db.cb.liq.asl.investments.service.MessageHelper.prettyPrintXML(MessageHelper.kt:53)
+	at com.db.cb.liq.asl.investments.service.TradeSubmissionService.buildTradeSubmission(TradeSubmissionService.kt:38)
+	at com.db.cb.liq.asl.investments.order.event.handler.OrderCreateEventHandler.doEventHandling(OrderCreateEventHandler.kt:84)
+	at com.db.cb.liq.asl.investments.order.event.handler.OrderEventHandlerAbstract.apply(OrderEventHandlerAbstract.kt:37)
+	... 181 common frames omitted
+Caused by: org.xml.sax.SAXParseException: Premature end of file.
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1251)
+	at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:637)
+	at java.xml/com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transformIdentity(TransformerImpl.java:666)
+	at java.xml/com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:780)
+	... 186 common frames omitted
