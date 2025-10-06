@@ -1,30 +1,3 @@
-    fun prettyPrintXML(xml: String?): String? {
-        val xmlInput: Source = StreamSource(StringReader(xml))
-        val stringWriter = StringWriter()
-        val xmlOutput = StreamResult(stringWriter)
-        val transformerFactory = TransformerFactory
-            .newInstance()
-        val transformer = transformerFactory.newTransformer()
-        transformer.setOutputProperty(
-            "{http://xml.apache.org/xslt}indent-amount", "2"
-        )
-        transformer.setOutputProperty(OutputKeys.INDENT, "yes")
-        transformer.transform(xmlInput, xmlOutput)
-        return xmlOutput.writer.toString()
-    }
+marshaller.setProperty("com.sun.xml.bind.namespacePrefixMapper", CustomNamespacePrefixMapper())
 
-
-Caused by: javax.xml.transform.TransformerException: org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; Premature end of file.
-	at java.xml/com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:792)
-	at java.xml/com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:395)
-	at com.db.cb.liq.asl.investments.service.MessageHelper.prettyPrintXML(MessageHelper.kt:53)
-	at com.db.cb.liq.asl.investments.service.TradeSubmissionService.buildTradeSubmission(TradeSubmissionService.kt:38)
-	at com.db.cb.liq.asl.investments.order.event.handler.OrderCreateEventHandler.doEventHandling(OrderCreateEventHandler.kt:84)
-	at com.db.cb.liq.asl.investments.order.event.handler.OrderEventHandlerAbstract.apply(OrderEventHandlerAbstract.kt:37)
-	... 181 common frames omitted
-Caused by: org.xml.sax.SAXParseException: Premature end of file.
-	at java.xml/com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1251)
-	at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:637)
-	at java.xml/com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transformIdentity(TransformerImpl.java:666)
-	at java.xml/com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:780)
-	... 186 common frames omitted
+jakarta.xml.bind.PropertyException: name: com.sun.xml.bind.namespacePrefixMapper value: com.db.cb.liq.asl.investments.service.CustomNamespacePrefixMapper@56bfe7c3
