@@ -1,3 +1,67 @@
-marshaller.setProperty("com.sun.xml.bind.namespacePrefixMapper", CustomNamespacePrefixMapper())
-
-jakarta.xml.bind.PropertyException: name: com.sun.xml.bind.namespacePrefixMapper value: com.db.cb.liq.asl.investments.service.CustomNamespacePrefixMapper@56bfe7c3
+18:43:25.475 [reactor-http-epoll-14] TRACE o.s.w.s.a.HttpWebHandlerAdapter - [90db3899-107] HTTP GET "/asl-gw-4/asl-gateway/feeds/baas/api/feed", headers={masked}
+18:43:25.476 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Path: /asl-gw-4/asl-gateway/feeds/baas/api/feed
+18:43:25.476 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Method: GET
+18:43:25.476 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Query Params: {}
+18:43:25.476 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Remote Address: /10.70.86.148:37434
+18:43:25.476 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'host' = '[asl-gw-int04.intranet.db.com]'
+18:43:25.476 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'authorization' = '[Bearer eyJ0eXAiOiJKV1QiLCJraWQiOiJiN2dTeXJ5NytIZUZWUVFzWTVmQWhEMWM3NU09IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiI1MjQyNi0xX1JtdyIsImN0cyI6Ik9BVVRIMl9TVEFURUxFU1NfR1JBTlQiLCJhdWRpdFRyYWNraW5nSWQiOiJkYjViOGUyNi1jNDg5LTRiMDAtODgzMS0xZTE1ZjE5MTI0ZWMtMzg2NiIsImlzcyI6Imh0dHBzOi8vZGV2MS5jaWRwMS5kZXYuZ2NwLmRiLmNvbS9hbS9vYXV0aDIvZ2xvYmFsIiwidG9rZW5OYW1lIjoiYWNjZXNzX3Rva2VuIiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImF1dGhHcmFudElkIjoiMmw5U1lhLWRBRGRjZ3JJbTlkZ1JCMUUxUklZIiwiYXVkIjpbIjUyNDI2LTFfUm13IiwiYXBpbSJdLCJuYmYiOjE3NjAwMzUzNjgsImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMiLCJzY29wZSI6WyJhcGltIl0sImF1dGhfdGltZSI6MTc2MDAzNTM2OCwicmVhbG0iOiIvZ2xvYmFsIiwiZXhwIjoxNzYwMDM4OTY4LCJpYXQiOjE3NjAwMzUzNjgsImV4cGlyZXNfaW4iOjM2MDAsImp0aSI6ImU4ZkhmbTZxZkk4VVFFSlpIS3NuOTkyR2FwbyIsImFtciI6WyJjY2ciXSwiYWNyIjoiMCIsImF6cCI6IjUyNDI2LTFfUm13IiwibWF5X2FjdCI6eyJjbGllbnRfaWQiOiJhcGlnZWUifX0.FPEn_YUxa3-S3Vc1StJP4I1tEPylQuJfirlRhFSe2THbIbfBga-TQZThcGGK20QEMpKTb4wQ9_JBIlfU16gANIPB0ZRU32zjYhrjvF16QIbGb3GgeKlDam2ypDV0QHfyMpQU94VRjhBLJ8tNN3ybrbwD1LrV0qjVrr7txnzDKWJCw7CR7Fptk9rBt8MA_1C3eftsTaKkpkfbjNiGcJSASBaTu6c33hiynKvnQS7gIXsJlq-wyUu5XBOOGnCktZgi05GQPF3-ci8vSvIV9XpP4lQloIFlTcZ-o1lbdTBPj2htZv91U4YDcvQVEoy4Sl14CnD5HJLjhYSfFaG7ZryUQw]'
+18:43:25.476 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'user-agent' = '[PostmanRuntime/7.26.8]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'accept' = '[*/*]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'accept-encoding' = '[gzip, deflate, br]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'cookie' = '[ssoLang=en]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'x-forwarded-proto' = '[https]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'via' = '[1.1 google]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'x-forwarded-for' = '[10.70.86.148,100.88.24.116,100.88.24.115]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'x-request-id' = '[fe44c311-7d2c-4a76-9281-60e5ea652597]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'x-envoy-attempt-count' = '[1]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'x-b3-traceid' = '[7679240cf272dceded0abad79a5d458d]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'x-b3-spanid' = '[ed0abad79a5d458d]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'x-b3-sampled' = '[0]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'x-apim-gateway-id' = '[apigee-internal]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'x-apim-region-id' = '[europe-west3]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'x-apim-org-id' = '[db-dev1-8wzd-apigee-i-1]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'x-apim-consumer-id' = '[52426-1_Rmw]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'x-apim-stage' = '[DEV]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'x-apim-app' = '[RMW_52426-1]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'x-apim-apiproxy' = '[52426-1_strategic-asl-services]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'x-apim-user' = '[52426-1_Rmw@db.com]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'x-forwarded-prefix' = '[/asl-gw-4]'
+18:43:25.477 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'x-forwarded' = '[https://gateway.apigee-internal-1.dev.gcp.db.com:443/asl-gw-4]'
+18:43:25.478 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'x-forwarded-host' = '[gateway.apigee-internal-1.dev.gcp.db.com:443]'
+18:43:25.478 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'glue-subscriber' = '[52426-1_Rmw;6f2592fa-6e1d-48af-a3c9-a1d35d61fae3;52426-1_Rmw@db.com]'
+18:43:25.478 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request Header: 'Transaction-ID' = '[6cd221e1-7e63-4262-a923-3ddc63be8d76]'
+18:43:25.478 [reactor-http-epoll-14] INFO  c.d.c.l.a.g.f.LoggingConfiguration - Request has no Origin header.
+18:43:25.479 [reactor-http-epoll-14] DEBUG o.s.s.w.a.p.x.SubjectDnX509PrincipalExtractor - Subject DN is 'CN=env-shared-onprem.apigee-internal-1.dev.gcp.db.com, O=Deutsche Bank AG'
+18:43:25.479 [reactor-http-epoll-14] DEBUG o.s.s.w.a.p.x.SubjectDnX509PrincipalExtractor - Extracted Principal name is 'env-shared-onprem.apigee-internal-1.dev.gcp.db.com'
+18:43:25.481 [reactor-http-epoll-14] DEBUG o.s.s.w.s.a.AnonymousAuthenticationWebFilter - SecurityContext contains anonymous token: 'PreAuthenticatedAuthenticationToken [Principal=env-shared-onprem.apigee-internal-1.dev.gcp.db.com, Credentials=[PROTECTED], Authenticated=true, Details=null, Granted Authorities=[]]'
+18:43:25.485 [parallel-9] DEBUG o.s.w.s.s.DefaultWebSessionManager - Created new WebSession.
+18:43:25.485 [parallel-9] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/logout', method=POST}
+18:43:25.485 [parallel-9] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Request 'GET /asl-gateway/feeds/baas/api/feed' doesn't match 'POST /logout'
+18:43:25.485 [parallel-9] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - No matches found
+18:43:25.485 [parallel-9] DEBUG o.s.s.w.s.a.DelegatingReactiveAuthorizationManager - Checking authorization on '/asl-gateway/feeds/baas/api/feed' using com.db.cb.liq.asl.gateway.security.WeirdAuthorizationManager@1e54dbfa
+18:43:25.486 [parallel-9] DEBUG o.s.s.w.s.a.AuthorizationWebFilter - Authorization successful
+18:43:25.486 [parallel-9] TRACE o.s.c.g.f.WeightCalculatorWebFilter - Weights attr: {}
+18:43:25.486 [parallel-9] TRACE o.s.c.g.h.p.PathRoutePredicateFactory - Pattern "[/clients/**]" does not match against value "/asl-gw-4/asl-gateway/feeds/baas/api/feed"
+18:43:25.486 [parallel-9] TRACE o.s.c.g.h.p.PathRoutePredicateFactory - Pattern "[/securities/**]" does not match against value "/asl-gw-4/asl-gateway/feeds/baas/api/feed"
+18:43:25.486 [parallel-9] TRACE o.s.c.g.h.p.PathRoutePredicateFactory - Pattern "[/locations/**]" does not match against value "/asl-gw-4/asl-gateway/feeds/baas/api/feed"
+18:43:25.486 [parallel-9] TRACE o.s.c.g.h.p.PathRoutePredicateFactory - Pattern "[/loans/**]" does not match against value "/asl-gw-4/asl-gateway/feeds/baas/api/feed"
+18:43:25.486 [parallel-9] TRACE o.s.c.g.h.p.PathRoutePredicateFactory - Pattern "[/investmentAllocation/**]" does not match against value "/asl-gw-4/asl-gateway/feeds/baas/api/feed"
+18:43:25.486 [parallel-9] TRACE o.s.c.g.h.p.PathRoutePredicateFactory - Pattern "[/investmentGovernance/**]" does not match against value "/asl-gw-4/asl-gateway/feeds/baas/api/feed"
+18:43:25.486 [parallel-9] TRACE o.s.c.g.h.p.PathRoutePredicateFactory - Pattern "[/auth]" does not match against value "/asl-gw-4/asl-gateway/feeds/baas/api/feed"
+18:43:25.486 [parallel-9] TRACE o.s.c.g.h.p.PathRoutePredicateFactory - Pattern "[/counterparties/**]" does not match against value "/asl-gw-4/asl-gateway/feeds/baas/api/feed"
+18:43:25.486 [parallel-9] TRACE o.s.c.g.h.p.PathRoutePredicateFactory - Pattern "[/fxRates/**]" does not match against value "/asl-gw-4/asl-gateway/feeds/baas/api/feed"
+18:43:25.486 [parallel-9] TRACE o.s.c.g.h.p.PathRoutePredicateFactory - Pattern "[/investments/**]" does not match against value "/asl-gw-4/asl-gateway/feeds/baas/api/feed"
+18:43:25.486 [parallel-9] TRACE o.s.c.g.h.p.PathRoutePredicateFactory - Pattern "[/asl-gateway/feeds/**]" does not match against value "/asl-gw-4/asl-gateway/feeds/baas/api/feed"
+18:43:25.486 [parallel-9] TRACE o.s.c.g.h.p.PathRoutePredicateFactory - Pattern "[/asl-gateway/deal/**]" does not match against value "/asl-gw-4/asl-gateway/feeds/baas/api/feed"
+18:43:25.486 [parallel-9] TRACE o.s.c.g.h.p.PathRoutePredicateFactory - Pattern "[/asl-gateway/reporting/**]" does not match against value "/asl-gw-4/asl-gateway/feeds/baas/api/feed"
+18:43:25.486 [parallel-9] TRACE o.s.c.g.h.p.PathRoutePredicateFactory - Pattern "[/asl-gateway/static-data-management/**]" does not match against value "/asl-gw-4/asl-gateway/feeds/baas/api/feed"
+18:43:25.486 [parallel-9] TRACE o.s.c.g.h.p.PathRoutePredicateFactory - Pattern "[/asl-gateway/swift-mmf/**]" does not match against value "/asl-gw-4/asl-gateway/feeds/baas/api/feed"
+18:43:25.486 [parallel-9] TRACE o.s.c.g.h.p.PathRoutePredicateFactory - Pattern "[/asl-gateway/order-accept/api/**]" does not match against value "/asl-gw-4/asl-gateway/feeds/baas/api/feed"
+18:43:25.486 [parallel-9] TRACE o.s.c.g.h.p.PathRoutePredicateFactory - Pattern "[/asl-gateway/order-process/api/**]" does not match against value "/asl-gw-4/asl-gateway/feeds/baas/api/feed"
+18:43:25.486 [parallel-9] TRACE o.s.c.g.h.p.PathRoutePredicateFactory - Pattern "[/asl-gateway/feedback-processor-service/**]" does not match against value "/asl-gw-4/asl-gateway/feeds/baas/api/feed"
+18:43:25.486 [parallel-9] TRACE o.s.c.g.h.p.PathRoutePredicateFactory - Pattern "[/asl-gateway/investment-management/**]" does not match against value "/asl-gw-4/asl-gateway/feeds/baas/api/feed"
+18:43:25.486 [parallel-9] TRACE o.s.c.g.h.RoutePredicateHandlerMapping - No RouteDefinition found for [Exchange: GET https://gateway.apigee-internal-1.dev.gcp.db.com/asl-gw-4/asl-gateway/feeds/baas/api/feed]
+18:43:25.487 [parallel-9] DEBUG o.s.w.r.h.SimpleUrlHandlerMapping - [90db3899-107] Mapped to ResourceWebHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/]]
+18:43:25.489 [parallel-9] DEBUG o.s.w.r.resource.ResourceWebHandler - [90db3899-107] Resource not found
+18:43:25.491 [parallel-9] DEBUG o.s.w.s.h.ResponseStatusExceptionHandler - [90db3899-107] Resolved [NoResourceFoundException: "404 NOT_FOUND "No static resource asl-gateway/feeds/baas/api/feed.""] for HTTP GET /asl-gw-4/asl-gateway/feeds/baas/api/feed
+18:43:25.491 [parallel-9] TRACE o.s.w.s.a.HttpWebHandlerAdapter - [90db3899-107] Completed 404 NOT_FOUND, headers={masked}
